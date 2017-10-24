@@ -4,13 +4,13 @@ use <library/Utils.scad>
 width = 60; // mm width
 
 //26mm depth
-holeToHole = 29; 
-holeWidth = 3;
+holeToHole = 26.5; 
+holeWidth = 3.5; 
 
 mountHeight = 100;
 mountWidth = 8;
 
-$fn = 100;
+$fn = 50;
 //move(x=6-holeWidth/2, z=0, y=mountWidth+1, rx=90)cylinder(h=mountWidth + 2, d=holeWidth);
 union() {
 	frame();
@@ -35,16 +35,18 @@ module frame(){
 	}
 }
 
+
+//26.36 inside width of hole 32.7 
 module base(){
 	difference(){
 		cube([width, 25, 3] );
-		sideToHole = (60 - 29 - 3)/2;
+		sideToHole = (width - holeToHole - holeWidth)/2;
 
-		move(y=10, x=sideToHole) cylinder(h =5, d=holeWidth);
-		move(y=10, x=60- sideToHole  ) cylinder(h =5, d=holeWidth);
+		move(y=8, x=sideToHole) cylinder(h =5, d=holeWidth);
+		move(y=8, x=width-sideToHole  ) cylinder(h =5, d=holeWidth);
 
-		move(y=20, x=10  ) cylinder(h =5, d =4);
-		move(y=20, x=width - 10  ) cylinder(h =5, d =4);
+		move(y=20, x=7  ) cylinder(h =5, d =6);
+		move(y=20, x=width - 7  ) cylinder(h =5, d =6);
 	}
 }
 	
