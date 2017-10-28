@@ -10,6 +10,8 @@ holeWidth = 3.5;
 mountHeight = 100;
 mountWidth = 8;
 
+holeHeight = 45; // Height from where the mount holes start
+
 $fn = 50;
 //move(x=6-holeWidth/2, z=0, y=mountWidth+1, rx=90)cylinder(h=mountWidth + 2, d=holeWidth);
 union() {
@@ -25,7 +27,7 @@ module frame(){
 			move(x=width - mountWidth) cube([mountWidth,mountWidth,mountHeight]);
 			move( y=4, z=100-mountWidth+4, ry=90)cylinder(d=6, h= width, center=false);
 		}
-		for(a=[6: 5: mountHeight]){
+		for(a=[holeHeight: 5: mountHeight - 5]){
 			move(x=6-holeWidth/2, z=a, y=mountWidth+1, rx=90)
 				cylinder(h=mountWidth + 2, d=holeWidth);
 			
